@@ -1,0 +1,5 @@
+rootProject.name = 'goneda'
+include 'goneda-core'
+include 'goneda-batch'
+include 'goneda-web'
+
