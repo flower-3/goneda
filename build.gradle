@@ -18,11 +18,12 @@ subprojects {
     }
 
     dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-        testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-
-        compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
+        testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+        compileOnly 'org.projectlombok:lombok'
+        runtimeOnly 'com.h2database:h2'
     }
 
     test {
@@ -39,7 +40,5 @@ project(':goneda-batch') {
 project(':goneda-web') {
     dependencies {
         implementation project(':goneda-core')
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.boot:spring-boot-starter-freemarker'
     }
 }
