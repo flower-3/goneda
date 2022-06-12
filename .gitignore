@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### jenv ###
+.java-version
+
+### gradle ###
+/.gradle/
+/gradle/
