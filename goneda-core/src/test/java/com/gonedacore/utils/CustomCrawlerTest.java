@@ -12,7 +12,7 @@ import com.gonedacore.config.SeleniumConfig;
 
 @SpringBootTest
 @ActiveProfiles("local")
-public class CustomerCrawlerTest {
+public class CustomCrawlerTest {
 
 	@Autowired
 	ChromeDriver chromeDriver;
