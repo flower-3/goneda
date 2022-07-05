@@ -21,8 +21,8 @@ public class RestaurantMenu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name="restaurantId")
+    @ManyToOne(targetEntity = Restaurant.class)
+    @JoinColumn(name="restaurant_id")
     private Restaurant restaurant;
 
     @Column(nullable = false)
