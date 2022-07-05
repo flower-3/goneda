@@ -23,7 +23,6 @@ subprojects {
         annotationProcessor 'org.projectlombok:lombok'
         testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
         compileOnly 'org.projectlombok:lombok'
-        runtimeOnly 'com.h2database:h2'
     }
 
     test {
