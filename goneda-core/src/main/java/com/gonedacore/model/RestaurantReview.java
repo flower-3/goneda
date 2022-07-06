@@ -26,7 +26,6 @@ public class RestaurantReview {
     @JoinColumn(name="restaurant_id")
     private Restaurant restaurant;
 
-    // 크롤링 날짜를 LocalDate 에 맞게 수정해야 할 필요성
     @Column(nullable = false)
     private String reviewDate;
 
@@ -48,7 +47,4 @@ public class RestaurantReview {
     @Column(nullable = false)
     private LocalDateTime updateAt;
 
-    public LocalDate transformReviewDateToLocalDate(String reviewDate) {
-        return null;
-    }
 }
