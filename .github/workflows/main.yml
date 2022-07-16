@@ -26,7 +26,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run gonedaweb build
-        run: ./gradlew goneda-web:build
+        run: ./gradlew goneda-web:build -Pprofile=prod
     
   deploy:
     needs: build
