@@ -8,6 +8,9 @@ subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'java'
+    apply plugin: 'application'
+
+    mainClassName = "module com.gonedaweb"
 
     group 'com'
     version '1.0-SNAPSHOT'
