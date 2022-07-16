@@ -14,7 +14,7 @@ subprojects {
     sourceCompatibility = '1.11'
 
     springBoot {
-        mainClass = 'com.mir3.service.contactfileparser.Main'
+        mainClass = 'com.gonedaweb'
     }
 
     repositories {
