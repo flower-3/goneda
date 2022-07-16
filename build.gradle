@@ -8,12 +8,14 @@ subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'java'
-
-    mainClassName = "com.gonedaweb"
-
+    
     group 'com'
     version '1.0-SNAPSHOT'
     sourceCompatibility = '1.11'
+
+    springBoot {
+        mainClass = 'com.mir3.service.contactfileparser.Main'
+    }
 
     repositories {
         mavenCentral()
