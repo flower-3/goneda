@@ -8,14 +8,13 @@ subprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'java'
+    apply plugin: 'application'
     
     group 'com'
     version '1.0-SNAPSHOT'
     sourceCompatibility = '1.11'
 
-    springBoot {
-        mainClass = 'com.gonedaweb'
-    }
+    mainClassName = 'com.gonedaweb'
 
     repositories {
         mavenCentral()
