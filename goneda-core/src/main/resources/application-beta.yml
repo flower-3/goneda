@@ -1,0 +1,18 @@
+crawler:
+  driver:
+    path: /home/runner/work/goneda
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${HOST}:${PORT}/goneda_db?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: ${USERNAME}
+    password: ${PASSWORD}
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
