@@ -5,9 +5,9 @@ crawler:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${HOST}:${PORT}/goneda_db?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
-    username: ${USERNAME}
-    password: ${PASSWORD}
+    url: jdbc:mysql://${GONEDA_DB_HOST}:${GONEDA_DB_PORT}/goneda_db?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: ${GONEDA_DB_USERNAME}
+    password: ${GONEDA_DB_PASSWORD}
 
   jpa:
     show-sql: true

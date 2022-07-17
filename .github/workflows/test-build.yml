@@ -8,10 +8,10 @@ on:
     branches: [ "main" ]
 
 env:
-  HOST: ${{ secrets.HOST }}
-  USERNAME: ${{ secrets.USERNAME }}
-  PASSWORD: ${{ secrets.PASSWORD }}
-  PORT: ${{ secrets.PORT }}
+  GONEDA_DB_HOST: ${{ secrets.GONEDA_DB_HOST }}
+  GONEDA_DB_USERNAME: ${{ secrets.GONEDA_DB_USERNAME }}
+  GONEDA_DB_PASSWORD: ${{ secrets.GONEDA_DB_PASSWORD }}
+  GONEDA_DB_PORT: ${{ secrets.GONEDA_DB_PORT }}
 
 jobs:
   # This workflow contains a single job called "build"
