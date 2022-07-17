@@ -1,6 +1,6 @@
 crawler:
   driver:
-    path: /home/runner/work/goneda
+    path: ./
 
 spring:
   datasource:

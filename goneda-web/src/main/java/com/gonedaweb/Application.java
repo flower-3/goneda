@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication
+@ComponentScan(basePackages = {"com.gonedacore", "com.gonedaweb"})
 @EntityScan(basePackages = {"com.gonedacore", "com.gonedaweb"})
 @EnableJpaRepositories(basePackages = {"com.gonedacore", "com.gonedaweb"})
 public class Application {
