@@ -30,6 +30,16 @@ jobs:
         run: chmod +x gradlew
       - name: sed -i
         run:
+          pwd
+          ls -al
+          cd goneda-core
+          ls -al
+          cd src
+          ls -al
+          cd main
+          ls -al
+          cd resources
+          ls- al
           sed -i 's/GONEDA_DB_HOST/${{ secrets.GONEDA_DB_HOST }}/g' ./goneda-core/src/main/resources/application-beta.yml
           sed -i 's/GONEDA_DB_USERNAME/${{ secrets.USERNAME }}/g' ./goneda-core/src/main/resources/application-beta.yml
           sed -i 's/GONEDA_DB_PASSWORD/${{ secrets.GONEDA_DB_PASSWORD }}/g' ./goneda-core/src/main/resources/application-beta.yml
