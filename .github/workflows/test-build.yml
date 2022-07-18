@@ -30,6 +30,8 @@ jobs:
           chmod +x ./scripts/InstallChrome.sh
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+      - name: pwd
+        run: pwd
       - name: sed -i
         run: |
           sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-core/src/main/resources/application-beta.yml
@@ -46,9 +48,7 @@ jobs:
           cat ./goneda-core/src/main/resources/application-beta.yml
           echo ##########################################
           ./gradlew test -Pprofile=beta
-      - name:
-        run: |
-          pwd
+
 
         
 
