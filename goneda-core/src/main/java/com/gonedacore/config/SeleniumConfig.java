@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class SeleniumConfig {
 
 	public SeleniumConfig(@Value("${crawler.driver.path}") String driverPath) {
-		System.setProperty("webdriver.chrome.driver", driverPath);
+		//System.setProperty("webdriver.chrome.driver", driverPath);
 		WebDriverManager.chromedriver().setup();
 	}
 
