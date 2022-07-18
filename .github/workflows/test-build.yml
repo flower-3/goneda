@@ -46,6 +46,7 @@ jobs:
           ./gradlew test -Pprofile=beta
       - name:
         run: |
-          cat ./goneda-web/src/main/resources/application-beta.yml
+          pwd
+
         
 
