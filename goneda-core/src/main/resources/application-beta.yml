@@ -1,6 +1,6 @@
 crawler:
   driver:
-    path: ./
+    path: classpath:/
 
 spring:
   datasource:
