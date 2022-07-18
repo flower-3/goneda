@@ -30,14 +30,14 @@ jobs:
         run: chmod +x gradlew
       - name: sed -i
         run: |
-          sed -i 's/GONEDA_DB_HOST/${{ secrets.GONEDA_DB_HOST }}/g' ./goneda-core/src/main/resources/application-beta.yml
-          sed -i 's/GONEDA_DB_USERNAME/${{ secrets.GONEDA_DB_USERNAME }}/g' ./goneda-core/src/main/resources/application-beta.yml
-          sed -i 's/GONEDA_DB_PASSWORD/${{ secrets.GONEDA_DB_PASSWORD }}/g' ./goneda-core/src/main/resources/application-beta.yml
-          sed -i 's/GONEDA_DB_PORT/${{ secrets.GONEDA_DB_PORT }}/g' ./goneda-core/src/main/resources/application-beta.yml
-          sed -i 's/GONEDA_DB_HOST/${{ secrets.GONEDA_DB_HOST }}/g' ./goneda-web/src/main/resources/application-beta.yml
-          sed -i 's/GONEDA_DB_USERNAME/${{ secrets.GONEDA_DB_USERNAME }}/g' ./goneda-web/src/main/resources/application-beta.yml
-          sed -i 's/GONEDA_DB_PASSWORD/${{ secrets.GONEDA_DB_PASSWORD }}/g' ./goneda-web/src/main/resources/application-beta.yml
-          sed -i 's/GONEDA_DB_PORT/${{ secrets.GONEDA_DB_PORT }}/g' ./goneda-web/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_USERNAME/${{secrets.GONEDA_DB_USERNAME}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PASSWORD/${{secrets.GONEDA_DB_PASSWORD}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PORT/${{secrets.GONEDA_DB_PORT}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-web/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_USERNAME/${{secrets.GONEDA_DB_USERNAME}}/g' ./goneda-web/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PASSWORD/${{secrets.GONEDA_DB_PASSWORD}}/g' ./goneda-web/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PORT/${{secrets.GONEDA_DB_PORT}}/g' ./goneda-web/src/main/resources/application-beta.yml
           echo ##########################################
           cat ./goneda-web/src/main/resources/application-beta.yml
           echo ##########################################
