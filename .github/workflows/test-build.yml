@@ -47,7 +47,7 @@ jobs:
           echo ##########################################
           cat ./goneda-core/src/main/resources/application-beta.yml
           echo ##########################################
-          ./gradlew test -Pprofile=beta
+          ./gradlew test -Pprofile=beta --info
 
 
         
