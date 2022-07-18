@@ -1,6 +1,6 @@
 crawler:
   driver:
-    path: /home/runner/work/goneda/goneda
+    path: /home/runner/.cache/selenium/chromedriver/linux64/103.0.5060.53/
 
 spring:
   datasource:
