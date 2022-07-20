@@ -3,7 +3,7 @@ name: CI
 # Controls when the workflow will run
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" , "4_cicd/actions" ]
   pull_request:
     types: [ "closed" ]
     branches: [ "main" ]
@@ -25,46 +25,65 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: pwd
+        run: pwd
+
+      - name: sed screct variable to config file
+        run: |
+          sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_USERNAME/${{secrets.GONEDA_DB_USERNAME}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PASSWORD/${{secrets.GONEDA_DB_PASSWORD}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PORT/${{secrets.GONEDA_DB_PORT}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-web/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_USERNAME/${{secrets.GONEDA_DB_USERNAME}}/g' ./goneda-web/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PASSWORD/${{secrets.GONEDA_DB_PASSWORD}}/g' ./goneda-web/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PORT/${{secrets.GONEDA_DB_PORT}}/g' ./goneda-web/src/main/resources/application-beta.yml
+          echo ##########################################
+          cat ./goneda-web/src/main/resources/application-beta.yml
+          echo ##########################################
+          cat ./goneda-core/src/main/resources/application-beta.yml
+          echo ##########################################
+
       - name: Run gonedaweb build
-        run: ./gradlew goneda-web:build -Pprofile=prod
+        run: ./gradlew goneda-web:build -Pprofile=beta
     
-  deploy:
-    needs: build
-    name: Deploy Steps
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deliver File
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          source: "build/libs/*.jar"
-          strip_components: 1
-          target: "source"
-        
-      - name: Deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            SOURCE_DIR=source/build/libs
-            FILE_NAME=`find $SOURCE_DIR/*.jar -printf "%f\n"`
-            PID=`ps -ef | grep goneda | grep sudo | grep -v "bash -c" | awk '{print $2}'`
-
-            if [ -z "$PID" ]; then
-                    echo "#### THERE IS NO PROCESS ####"
-            else
-                    echo "#### KILL $PID ####"
-                    sudo kill $PID
-            fi
-
-            echo "#### RUN $SOURCE_DIR/$FILE_NAME ####"
-
-            sudo java -jar $SOURCE_DIR/$FILE_NAME > /dev/null 2>&1 &
+#  deploy:
+#    needs: build
+#    name: Deploy Steps
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Deliver File
+#        uses: appleboy/scp-action@master
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          password: ${{ secrets.PASSWORD }}
+#          port: ${{ secrets.PORT }}
+#          source: "build/libs/*.jar"
+#          strip_components: 1
+#          target: "source"
+#
+#      - name: Deploy
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          password: ${{ secrets.PASSWORD }}
+#          port: ${{ secrets.PORT }}
+#          script: |
+#            SOURCE_DIR=source/build/libs
+#            FILE_NAME=`find $SOURCE_DIR/*.jar -printf "%f\n"`
+#            PID=`ps -ef | grep goneda | grep sudo | grep -v "bash -c" | awk '{print $2}'`
+#
+#            if [ -z "$PID" ]; then
+#                    echo "#### THERE IS NO PROCESS ####"
+#            else
+#                    echo "#### KILL $PID ####"
+#                    sudo kill $PID
+#            fi
+#
+#            echo "#### RUN $SOURCE_DIR/$FILE_NAME ####"
+#
+#            sudo java -jar $SOURCE_DIR/$FILE_NAME > /dev/null 2>&1 &
           
 
