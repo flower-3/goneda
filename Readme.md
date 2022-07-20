@@ -5,4 +5,4 @@ git update-index --assume-unchanged goneda-core/src/main/resources/application-p
 git update-index --assume-unchanged goneda-web/src/main/resources/application-prod.yml
 ```
 
-- gitgub action test
+- gitgub action test 2
