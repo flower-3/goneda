@@ -1,11 +1,11 @@
 crawler:
   driver:
-    path: /home/runner/.cache/selenium/chromedriver/linux64/103.0.5060.53/
+    path: /home/runner/./work/goneda/goneda/chromedriver_linux
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://GONEDA_DB_HOST:GONEDA_DB_PORT/goneda_db?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    url: jdbc:mysql://GONEDA_DB_HOST:GONEDA_DB_PORT/goneda_db?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: GONEDA_DB_USERNAME
     password: GONEDA_DB_PASSWORD
 

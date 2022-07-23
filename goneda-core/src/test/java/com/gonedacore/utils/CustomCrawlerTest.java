@@ -11,7 +11,6 @@ import org.springframework.test.context.ActiveProfiles;
 import com.gonedacore.config.SeleniumConfig;
 
 @SpringBootTest
-@ActiveProfiles({"local","beta"})
 public class CustomCrawlerTest {
 
 	@Autowired
