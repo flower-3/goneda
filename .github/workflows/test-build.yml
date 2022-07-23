@@ -33,7 +33,7 @@ jobs:
       - name: pwd
         run: pwd
       - name: find chrome driver
-        run: find /. -name chromedriver
+        run: find /home/runner/. -name chromedriver
       - name: sed -i
         run: |
           sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-core/src/main/resources/application-beta.yml
