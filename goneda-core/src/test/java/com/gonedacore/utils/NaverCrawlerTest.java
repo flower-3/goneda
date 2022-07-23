@@ -8,7 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@ActiveProfiles({"local", "beta"})
+@ActiveProfiles({"local"})
 class NaverCrawlerTest {
 
     @Autowired

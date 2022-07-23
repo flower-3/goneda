@@ -32,6 +32,8 @@ jobs:
         run: chmod +x gradlew
       - name: pwd
         run: pwd
+      - name: find chrome driver
+        run: find /. -name chromedriver
       - name: sed -i
         run: |
           sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-core/src/main/resources/application-beta.yml
