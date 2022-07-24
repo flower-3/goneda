@@ -30,7 +30,7 @@ public class SeleniumConfig {
 		options.setHeadless(true);
 		options.setImplicitWaitTimeout(Duration.ofMillis(2000));
 		options.setPageLoadStrategy(PageLoadStrategy.NONE);
-		options.setLogLevel(ChromeDriverLogLevel.DEBUG);
+		options.setLogLevel(ChromeDriverLogLevel.WARNING);
 		return options;
 	}
 

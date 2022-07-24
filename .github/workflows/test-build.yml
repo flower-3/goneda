@@ -25,15 +25,8 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-#      - name: Install Google Chrome # Using shell script to install Google Chrome
-#        run: |
-#          chmod +x ./scripts/InstallChrome.sh
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: pwd
-        run: pwd
-      - name: find chrome driver
-        run: find /home/runner/. -name chromedriver
       - name: sed -i
         run: |
           sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-core/src/main/resources/application-beta.yml
@@ -44,11 +37,6 @@ jobs:
           sed -i 's/GONEDA_DB_USERNAME/${{secrets.GONEDA_DB_USERNAME}}/g' ./goneda-web/src/main/resources/application-beta.yml
           sed -i 's/GONEDA_DB_PASSWORD/${{secrets.GONEDA_DB_PASSWORD}}/g' ./goneda-web/src/main/resources/application-beta.yml
           sed -i 's/GONEDA_DB_PORT/${{secrets.GONEDA_DB_PORT}}/g' ./goneda-web/src/main/resources/application-beta.yml
-          echo ##########################################
-          cat ./goneda-web/src/main/resources/application-beta.yml
-          echo ##########################################
-          cat ./goneda-core/src/main/resources/application-beta.yml
-          echo ##########################################
           SPRING_PROFILES_ACTIVE=beta ./gradlew clean test --info
 
 
