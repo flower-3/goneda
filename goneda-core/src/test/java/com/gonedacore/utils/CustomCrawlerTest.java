@@ -22,8 +22,4 @@ public class CustomCrawlerTest {
 		chromeDriver.get("https://www.daum.net");
 		Assertions.assertThat(chromeDriver.getTitle().contains("Daum"));
 	}
-	@AfterEach
-	public void test(){
-		ChromeDriverManager.chromedriver().setup();
-	}
 }
