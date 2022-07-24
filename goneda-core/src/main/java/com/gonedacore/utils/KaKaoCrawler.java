@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class KaKaoCrawler implements CustomCrawler{
 
     private final ChromeDriver chromeDriver;
-    private final String domain = "https://naver.com";
+    private final String domain = "https://www.daum.net/";
 
     @Override
     public String crawler() {
