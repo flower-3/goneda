@@ -3,9 +3,10 @@ name: run test code
 # Controls when the workflow will run
 on:
   push:
-    branches: [ "main", "test/actions" ]
-  pull_request:
     branches: [ "main" ]
+  pull_request:
+    branches:
+      - '*'
 
 env:
   GONEDA_DB_HOST: ${{ secrets.GONEDA_DB_HOST }}
