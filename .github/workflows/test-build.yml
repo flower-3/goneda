@@ -1,0 +1,47 @@
+name: run test code
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches:
+      - '*'
+
+env:
+  GONEDA_DB_HOST: ${{ secrets.GONEDA_DB_HOST }}
+  GONEDA_DB_USERNAME: ${{ secrets.GONEDA_DB_USERNAME }}
+  GONEDA_DB_PASSWORD: ${{ secrets.GONEDA_DB_PASSWORD }}
+  GONEDA_DB_PORT: ${{ secrets.GONEDA_DB_PORT }}
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    # if: github.event.pull_request.merged
+    steps:      
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: set file configuration
+        run: |
+          sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_USERNAME/${{secrets.GONEDA_DB_USERNAME}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PASSWORD/${{secrets.GONEDA_DB_PASSWORD}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PORT/${{secrets.GONEDA_DB_PORT}}/g' ./goneda-core/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-web/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_USERNAME/${{secrets.GONEDA_DB_USERNAME}}/g' ./goneda-web/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PASSWORD/${{secrets.GONEDA_DB_PASSWORD}}/g' ./goneda-web/src/main/resources/application-beta.yml
+          sed -i 's/GONEDA_DB_PORT/${{secrets.GONEDA_DB_PORT}}/g' ./goneda-web/src/main/resources/application-beta.yml
+      - name: run test code
+        run: SPRING_PROFILES_ACTIVE=beta ./gradlew clean test --info
+
+
+
+        
+
