@@ -58,7 +58,7 @@ jobs:
           cd goneda-web
           pwd
           ls
-          cd libs
+          cd src
           pwd
           ls
 
