@@ -56,13 +56,13 @@ jobs:
         run: ls
 
       - name: cd
-        run: goneda-web/
+        run: cd goneda-web/
 
       - name: ls
         run: ls
 
       - name: cd
-        run: goneda-web/libs
+        run: cd goneda-web/libs
 
       - name: ls
         run: ls
