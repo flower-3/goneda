@@ -53,21 +53,20 @@ jobs:
       - name: Run gonedabatch build
         run: SPRING_PROFILES_ACTIVE=prod ./gradlew clean goneda-batch:build -x test -Pprofile=prod
 
+      - name: run script
+        run: |
+          cd goneda-web
+          pwd
+          cd goneda-web
+          pwd
+          cd goneda-web
+          pwd
 
   deploy:
     needs: build
     name: Deploy Steps
     runs-on: ubuntu-latest
     steps:
-      - name: test
-        run: |
-          ls
-          cd goneda-web
-          ls
-          cd goneda-web
-          ls
-          cd goneda-web
-
       - name: Deliver goneda-web jar File
         uses: appleboy/scp-action@master
         with:
