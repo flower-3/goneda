@@ -55,9 +55,7 @@ jobs:
       - name: ls file
         run: |
           ls
-          cd build
-          ls
-          cd libs
+          cd ./build/libs
           ls
 
 #  deploy:
