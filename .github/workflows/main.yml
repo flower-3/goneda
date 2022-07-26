@@ -46,38 +46,12 @@ jobs:
           echo ##########################################
           cat ./goneda-core/src/main/resources/application-prod.yml
           echo ##########################################
+
       - name: Run gonedaweb build
         run: SPRING_PROFILES_ACTIVE=prod ./gradlew clean goneda-web:build -x test -Pprofile=prod
 
       - name: Run gonedabatch build
         run: SPRING_PROFILES_ACTIVE=prod ./gradlew clean goneda-batch:build -x test -Pprofile=prod
-
-      - name: ls
-        run: ls
-
-      - name: cd
-        run: cd goneda-web/
-
-      - name: pwd
-        run: pwd
-
-      - name: ls
-        run: ls
-
-      - name: cd
-        run: cd goneda-web
-
-      - name: ls
-        run: ls
-
-      - name: cd
-        run: cd goneda-web/libs
-
-      - name: pwd
-        run: pwd
-
-      - name: ls
-        run: ls
 
 
   deploy:
@@ -85,6 +59,15 @@ jobs:
     name: Deploy Steps
     runs-on: ubuntu-latest
     steps:
+      - name: test
+        run: |
+          ls
+          cd goneda-web
+          ls
+          cd goneda-web
+          ls
+          cd goneda-web
+
       - name: Deliver goneda-web jar File
         uses: appleboy/scp-action@master
         with:
