@@ -60,7 +60,8 @@ jobs:
       - name: check file
         run: |
           pwd
-          cd goneda-web/build/libs
+          ls
+          cd /goneda-web/
           ls
 
       - name: Deliver goneda-web jar File
