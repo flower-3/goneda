@@ -3,7 +3,7 @@ name: CI
 # Controls when the workflow will run
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" , "cicd/actions" ]
   pull_request:
     types: [ "closed" ]
     branches: [ "main" ]
@@ -13,9 +13,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     # if: github.event.pull_request.merged
-    steps:      
+    steps:
       - uses: actions/checkout@v3
-      
+
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
@@ -25,46 +25,65 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: sed screct variable to config file
+        run: |
+          sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-batch/src/main/resources/application-prod.yml
+          sed -i 's/GONEDA_DB_USERNAME/${{secrets.GONEDA_DB_USERNAME}}/g' ./goneda-batch/src/main/resources/application-prod.yml
+          sed -i 's/GONEDA_DB_PASSWORD/${{secrets.GONEDA_DB_PASSWORD}}/g' ./goneda-batch/src/main/resources/application-prod.yml
+          sed -i 's/GONEDA_DB_PORT/${{secrets.GONEDA_DB_PORT}}/g' ./goneda-batch/src/main/resources/application-prod.yml
+          sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-core/src/main/resources/application-prod.yml
+          sed -i 's/GONEDA_DB_USERNAME/${{secrets.GONEDA_DB_USERNAME}}/g' ./goneda-core/src/main/resources/application-prod.yml
+          sed -i 's/GONEDA_DB_PASSWORD/${{secrets.GONEDA_DB_PASSWORD}}/g' ./goneda-core/src/main/resources/application-prod.yml
+          sed -i 's/GONEDA_DB_PORT/${{secrets.GONEDA_DB_PORT}}/g' ./goneda-core/src/main/resources/application-prod.yml
+          sed -i 's/GONEDA_DB_HOST/${{secrets.GONEDA_DB_HOST}}/g' ./goneda-web/src/main/resources/application-prod.yml
+          sed -i 's/GONEDA_DB_USERNAME/${{secrets.GONEDA_DB_USERNAME}}/g' ./goneda-web/src/main/resources/application-prod.yml
+          sed -i 's/GONEDA_DB_PASSWORD/${{secrets.GONEDA_DB_PASSWORD}}/g' ./goneda-web/src/main/resources/application-prod.yml
+          sed -i 's/GONEDA_DB_PORT/${{secrets.GONEDA_DB_PORT}}/g' ./goneda-web/src/main/resources/application-prod.yml
+          echo ##########################################
+          cat ./goneda-batch/src/main/resources/application-prod.yml
+          echo ##########################################
+          cat ./goneda-web/src/main/resources/application-prod.yml
+          echo ##########################################
+          cat ./goneda-core/src/main/resources/application-prod.yml
+          echo ##########################################
       - name: Run gonedaweb build
-        run: ./gradlew goneda-web:build -x test -Pprofile=prod
-    
-  deploy:
-    needs: build
-    name: Deploy Steps
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deliver File
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          source: "build/libs/*.jar"
-          strip_components: 1
-          target: "source"
-        
-      - name: Deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            SOURCE_DIR=source/build/libs
-            FILE_NAME=`find $SOURCE_DIR/*.jar -printf "%f\n"`
-            PID=`ps -ef | grep goneda | grep sudo | grep -v "bash -c" | awk '{print $2}'`
+        run: SPRING_PROFILES_ACTIVE=prod ./gradlew goneda-web:build
 
-            if [ -z "$PID" ]; then
-                    echo "#### THERE IS NO PROCESS ####"
-            else
-                    echo "#### KILL $PID ####"
-                    sudo kill $PID
-            fi
-
-            echo "#### RUN $SOURCE_DIR/$FILE_NAME ####"
-
-            sudo java -jar $SOURCE_DIR/$FILE_NAME > /dev/null 2>&1 &
-          
-
+#  deploy:
+#    needs: build
+#    name: Deploy Steps
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Deliver File
+#        uses: appleboy/scp-action@master
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          password: ${{ secrets.PASSWORD }}
+#          port: ${{ secrets.PORT }}
+#          source: "build/libs/*.jar"
+#          strip_components: 1
+#          target: "source"
+#
+#      - name: Deploy
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          password: ${{ secrets.PASSWORD }}
+#          port: ${{ secrets.PORT }}
+#          script: |
+#            SOURCE_DIR=source/build/libs
+#            FILE_NAME=`find $SOURCE_DIR/*.jar -printf "%f\n"`
+#            PID=`ps -ef | grep goneda | grep sudo | grep -v "bash -c" | awk '{print $2}'`
+#
+#            if [ -z "$PID" ]; then
+#                    echo "#### THERE IS NO PROCESS ####"
+#            else
+#                    echo "#### KILL $PID ####"
+#                    sudo kill $PID
+#            fi
+#
+#            echo "#### RUN $SOURCE_DIR/$FILE_NAME ####"
+#
+#            sudo java -jar $SOURCE_DIR/$FILE_NAME > /dev/null 2>&1 &
