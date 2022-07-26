@@ -57,10 +57,11 @@ jobs:
         run: |
           cd goneda-web
           pwd
-          cd goneda-web
+          ls
+          cd libs
           pwd
-          cd goneda-web
-          pwd
+          ls
+
 
   deploy:
     needs: build
