@@ -63,6 +63,8 @@ jobs:
           ls
           cd /goneda-web/
           ls
+          cd /goneda-web/libs
+          ls
 
       - name: Deliver goneda-web jar File
         uses: appleboy/scp-action@master
