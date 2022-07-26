@@ -47,7 +47,7 @@ jobs:
           cat ./goneda-core/src/main/resources/application-prod.yml
           echo ##########################################
       - name: Run gonedaweb build
-        run: SPRING_PROFILES_ACTIVE=prod ./gradlew goneda-web:build
+        run: SPRING_PROFILES_ACTIVE=prod ./gradlew goneda-web:build --info
 
 #  deploy:
 #    needs: build
