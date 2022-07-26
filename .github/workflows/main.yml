@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD
 
 # Controls when the workflow will run
 on:
@@ -48,6 +48,9 @@ jobs:
           echo ##########################################
       - name: Run gonedaweb build
         run: SPRING_PROFILES_ACTIVE=prod ./gradlew goneda-web:build --info
+
+      - name: pwd
+        run: pwd
 
 #  deploy:
 #    needs: build
