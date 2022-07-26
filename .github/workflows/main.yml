@@ -52,6 +52,14 @@ jobs:
       - name: pwd
         run: pwd
 
+      - name: ls file
+        run: |
+          ls
+          cd build
+          ls
+          cd libs
+          ls
+
 #  deploy:
 #    needs: build
 #    name: Deploy Steps
