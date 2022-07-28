@@ -49,8 +49,9 @@ jobs:
 
       - name: Run gonedaweb & gonedabatch build
         run: |
-          ./gradlew clean goneda-web:bootJar -x test -Pprofile=prod --info
-          ./gradlew clean goneda-batch:bootJar -x test -Pprofile=prod --info
+          ./gradlew clean goneda-web:build -x test --info
+          ./gradlew clean goneda-batch:build -x test --info
+          pwd
           find . -name  "*SNAPSHOT.jar"
 
 
@@ -66,7 +67,6 @@ jobs:
           username: ${{ secrets.GONEDA_SERVER_USERNAME }}
           password: ${{ secrets.GONEDA_SERVER_PASSWORD }}
           port: ${{ secrets.GONEDA_SERVER_PORT }}
-          run: pwd
           source: "./goneda-batch/build/libs/*.jar"
           strip_components: 1
           target: "./deploy"
