@@ -63,8 +63,7 @@ jobs:
       - name:
         run: |
           pwd
-          ls
-          ls -al /home/runner/work/goneda/goneda/goneda-batch/build/libs/
+          ls -al goneda
 
       - name: Deliver goneda-web jar File
         uses: appleboy/scp-action@master
