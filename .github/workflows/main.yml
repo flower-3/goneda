@@ -49,9 +49,11 @@ jobs:
 
       - name: Run gonedaweb & gonedabatch build
         run: |
-          SPRING_PROFILES_ACTIVE=prod ./gradlew clean goneda-web:build -x test -Pprofile=prod
-          SPRING_PROFILES_ACTIVE=prod ./gradlew clean goneda-batch:build -x test -Pprofile=prod
+          ./gradlew clean goneda-web:build -x test -Pprofile=prod
+          ./gradlew clean goneda-batch:build -x test -Pprofile=prod
           pwd
+          ls
+          ls -al goneda-web
           ls -al goneda-web/build/libs
           ls -al goneda-batch/build/libs
 
