@@ -60,6 +60,12 @@ jobs:
     name: Deploy Steps
     runs-on: ubuntu-latest
     steps:
+      - name:
+        run: |
+          pwd
+          ls
+          ls -al /home/runner/work/goneda/goneda/goneda-batch/build/libs/
+
       - name: Deliver goneda-web jar File
         uses: appleboy/scp-action@master
         with:
