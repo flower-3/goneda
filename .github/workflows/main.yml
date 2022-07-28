@@ -52,12 +52,7 @@ jobs:
           ./gradlew clean goneda-web:bootJar -x test -Pprofile=prod
           ./gradlew clean goneda-batch:bootJar -x test -Pprofile=prod
           pwd
-          echo ################
-          ls -al goneda-web
-          echo ################
-          ls -al goneda-web/src
-          ls -al goneda-web/build/libs
-          ls -al goneda-batch/build/libs
+          find . -name  "*SNAPSHOT.jar"
 
 
   deploy:
