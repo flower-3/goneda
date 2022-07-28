@@ -77,11 +77,12 @@ jobs:
           target: "/deploy"
 
 
-  deploy:
-    needs: build
-    name: Deploy Steps
-    runs-on: ubuntu-latest
-    steps:
+#  deploy:
+#    needs: build
+#    name: Deploy Steps
+#    runs-on: ubuntu-latest
+#    steps:
+#
 #      - name: Deploy
 #        uses: appleboy/ssh-action@master
 #        with:
