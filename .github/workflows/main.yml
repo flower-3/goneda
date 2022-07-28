@@ -49,8 +49,8 @@ jobs:
 
       - name: Run gonedaweb & gonedabatch build
         run: |
-          ./gradlew clean goneda-web:build -x test --info
-          ./gradlew clean goneda-batch:build -x test --info
+          ./gradlew clean goneda-batch:build -x test
+          ./gradlew clean goneda-web:build -x test
           pwd
           find . -name  "*SNAPSHOT.jar"
 
