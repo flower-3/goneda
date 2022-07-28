@@ -50,8 +50,8 @@ jobs:
       - name: Run gonedaweb & gonedabatch build
         run: |
           ./gradlew clean goneda-web:bootJar -x test -Pprofile=prod
+          find . -name  "*SNAPSHOT.jar"
           ./gradlew clean goneda-batch:bootJar -x test -Pprofile=prod
-          pwd
           find . -name  "*SNAPSHOT.jar"
 
 
