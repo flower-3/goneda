@@ -49,8 +49,8 @@ jobs:
 
       - name: Run gonedaweb & gonedabatch build
         run: |
-          ./gradlew clean goneda-web:build -x test -Pprofile=prod
-          ./gradlew clean goneda-batch:build -x test -Pprofile=prod
+          ./gradlew clean goneda-web:bootJar -x test -Pprofile=prod
+          ./gradlew clean goneda-batch:bootJar -x test -Pprofile=prod
           pwd
           echo ################
           ls -al goneda-web
