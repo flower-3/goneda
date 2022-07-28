@@ -67,7 +67,7 @@ jobs:
           username: ${{ secrets.GONEDA_SERVER_USERNAME }}
           password: ${{ secrets.GONEDA_SERVER_PASSWORD }}
           port: ${{ secrets.GONEDA_SERVER_PORT }}
-          source: "./goneda-batch/build/libs/*.jar"
+          source: "/home/runner/work/goneda/goneda/goneda-batch/build/libs/*.jar"
           strip_components: 1
           target: "./deploy"
 
