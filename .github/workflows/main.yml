@@ -54,7 +54,7 @@ jobs:
           pwd
           echo ################
           ls -al goneda-web
-          ehco ################
+          echo ################
           ls -al goneda-web/src
           ls -al goneda-web/build/libs
           ls -al goneda-batch/build/libs
