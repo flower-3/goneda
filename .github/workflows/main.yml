@@ -60,10 +60,8 @@ jobs:
     name: Deploy Steps
     runs-on: ubuntu-latest
     steps:
-      - name:
-        run: |
-          pwd
-          ls -al goneda
+      - name: ls
+        run: ls
 
       - name: Deliver goneda-web jar File
         uses: appleboy/scp-action@master
