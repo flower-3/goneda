@@ -25,9 +25,10 @@ public class SeleniumConfig {
 	}
 
 	@Bean
-	public ChromeOptions chromeOptions(){
+	public ChromeOptions chromeOptions(@Value("${crawler.driver.path}") String driverPath){
 		ChromeOptions options = new ChromeOptions();
 		options.setHeadless(true);
+		options.setBinary(driverPath);
 		options.setImplicitWaitTimeout(Duration.ofMillis(2000));
 		options.setPageLoadStrategy(PageLoadStrategy.NONE);
 		options.setLogLevel(ChromeDriverLogLevel.WARNING);
