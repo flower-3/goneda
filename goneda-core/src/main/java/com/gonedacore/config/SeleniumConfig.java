@@ -16,7 +16,7 @@ public class SeleniumConfig {
 
 	public SeleniumConfig(@Value("${crawler.driver.path}") String driverPath) {
 		System.setProperty("webdriver.chrome.driver", driverPath);
-		//System.setProperty("webdriver.chrome.whitelistedIps", "");
+		System.setProperty("webdriver.chrome.whitelistedIps", "");
 		ChromeDriverManager.chromedriver().setup();
 	}
 
@@ -30,7 +30,7 @@ public class SeleniumConfig {
 		ChromeOptions options = new ChromeOptions();
 		options.setHeadless(true);
 		options.setBinary(driverPath);
-		options.addArguments("--whitelisted-ips=''");
+		//options.addArguments("--whitelisted-ips=''");
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-extensions");
 		options.addArguments("--disable-dev-shm-usage");
