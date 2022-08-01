@@ -88,7 +88,7 @@ jobs:
           password: ${{ secrets.GONEDA_SERVER_PASSWORD }}
           port: ${{ secrets.GONEDA_SERVER_PORT }}
           script: |
-            readarray -t array < <(find /deploy -name *SNAPSHOT.jar -print0)
+            readarray -t array < <(find /deploy -name "*SNAPSHOT.jar" -print0)
             echo ${array[@]}
 
 #            PID=`ps -ef | grep goneda | grep sudo | grep -v "bash -c" | awk '{print $2}'`
