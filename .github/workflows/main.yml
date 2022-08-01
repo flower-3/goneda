@@ -83,14 +83,13 @@ jobs:
       - name: run spring boot script via ssh
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
+          host: ${{ secrets.GONEDA_SERVER_HOST }}
+          username: ${{ secrets.GONEDA_SERVER_USERNAME }}
+          password: ${{ secrets.GONEDA_SERVER_PASSWORD }}
+          port: ${{ secrets.GONEDA_SERVER_PORT }}
           script: |
             cd deploy
             readarray -d '' array << (find ./ -name *SNAPSHOT.jar -type d -print0)
-
             for i in "${array[@]}";
               do echo $i;
             done
