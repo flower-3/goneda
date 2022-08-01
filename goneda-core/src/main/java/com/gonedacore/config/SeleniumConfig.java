@@ -30,7 +30,7 @@ public class SeleniumConfig {
 		ChromeOptions options = new ChromeOptions();
 		options.setHeadless(true);
 		options.setBinary(driverPath);
-		//options.addArguments("--whitelisted-ips=''");
+		options.addArguments("--remote-debugging-port=9222");
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-extensions");
 		options.addArguments("--disable-dev-shm-usage");
