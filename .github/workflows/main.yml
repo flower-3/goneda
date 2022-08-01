@@ -51,6 +51,7 @@ jobs:
         run: |
           ./gradlew goneda-web:build -x test
           ./gradlew goneda-batch:build -x test
+          find . -name  "*SNAPSHOT.jar"
 
       - name: Deliver goneda-batch jar File
         uses: appleboy/scp-action@master
