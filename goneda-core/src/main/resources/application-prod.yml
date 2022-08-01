@@ -1,6 +1,6 @@
 crawler:
   driver:
-    path: chromedriver_linux
+    path: /chromedriver_linux
 
 server:
   port: 8080
