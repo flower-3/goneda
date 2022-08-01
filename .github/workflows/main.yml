@@ -88,9 +88,10 @@ jobs:
           password: ${{ secrets.GONEDA_SERVER_PASSWORD }}
           port: ${{ secrets.GONEDA_SERVER_PORT }}
           script: |
-            pwd
-            ls
             cd /deploy
+            ls
+            ls -al /deploy/goneda-batch
+            ls -al /deploy/goneda-web
             readarray -d '' array < <(find . -name "*SHAPSHOT.jar" -print0)
             for i in "${array[@]}";
               do echo $i
