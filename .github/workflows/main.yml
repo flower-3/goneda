@@ -75,25 +75,28 @@ jobs:
           strip_components: 2
           target: "/deploy"
 
+  deploy:
+    needs: build
+    name: Deploy Steps
+    runs-on: ubuntu-latest
+    steps:
+      - name: run spring boot script via ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd deploy
+            readarray -d '' array << (find ./ -name *SNAPSHOT.jar -type d -print0)
 
-#  deploy:
-#    needs: build
-#    name: Deploy Steps
-#    runs-on: ubuntu-latest
-#    steps:
-#
-#      - name: Deploy
-#        uses: appleboy/ssh-action@master
-#        with:
-#          host: ${{ secrets.HOST }}
-#          username: ${{ secrets.USERNAME }}
-#          password: ${{ secrets.PASSWORD }}
-#          port: ${{ secrets.PORT }}
-#          script: |
-#            SOURCE_DIR=source/build/libs
-#            FILE_NAME=`find $SOURCE_DIR/*.jar -printf "%f\n"`
+            for i in "${array[@]}";
+              do echo $i;
+            done
+
 #            PID=`ps -ef | grep goneda | grep sudo | grep -v "bash -c" | awk '{print $2}'`
-#
+
 #            if [ -z "$PID" ]; then
 #                    echo "#### THERE IS NO PROCESS ####"
 #            else
