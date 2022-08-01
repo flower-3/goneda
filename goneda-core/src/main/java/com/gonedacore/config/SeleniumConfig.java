@@ -34,6 +34,7 @@ public class SeleniumConfig {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-extensions");
 		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("--remote-debugging-port=9222");
 		options.setImplicitWaitTimeout(Duration.ofMillis(2000));
 		options.setPageLoadStrategy(PageLoadStrategy.NONE);
 		options.setLogLevel(ChromeDriverLogLevel.WARNING);
