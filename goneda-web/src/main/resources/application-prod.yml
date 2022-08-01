@@ -1,6 +1,6 @@
 crawler:
     driver:
-        path: /home/runner/./work/goneda/goneda/chromedriver_linux
+        path: chromedriver_linux
 
 server:
     port: 8080
