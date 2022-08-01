@@ -29,10 +29,11 @@ public class SeleniumConfig {
 		ChromeOptions options = new ChromeOptions();
 		options.setHeadless(true);
 		options.setBinary(driverPath);
-		options.addArguments("—headless");
-		options.addArguments("—whitelisted-ips");
-		options.addArguments("—no-sandbox");
-		options.addArguments("—disable-extensions");
+		options.addArguments("--headless");
+		options.addArguments("--whitelisted-ips");
+		options.addArguments("--no-sandbox");
+		options.addArguments("--disable-extensions");
+		options.addArguments("--disable-dev-shm-usage");
 		options.setImplicitWaitTimeout(Duration.ofMillis(2000));
 		options.setPageLoadStrategy(PageLoadStrategy.NONE);
 		options.setLogLevel(ChromeDriverLogLevel.WARNING);
