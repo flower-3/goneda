@@ -89,9 +89,9 @@ jobs:
           port: ${{ secrets.GONEDA_SERVER_PORT }}
           script: |
             cd deploy
-            readarray -d '' array << (find ./ -name *SNAPSHOT.jar -type d -print0)
-            for i in "${array[@]}";
-              do echo $i;
+            readarray -d '' array < <(find . -name "*SHAPSHOT.jar" -print0)
+            for i in "${array[@]}"; do
+              do echo $i
             done
 
 #            PID=`ps -ef | grep goneda | grep sudo | grep -v "bash -c" | awk '{print $2}'`
