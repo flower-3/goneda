@@ -1,3 +1,7 @@
+crawler:
+  driver:
+    path: /home/runner/./work/goneda/goneda/chromedriver_linux
+
 server:
   port: 8080
 spring:
@@ -18,8 +22,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
-crawler:
-  driver:
-    path: classpath:/
+
 
 
