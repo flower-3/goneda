@@ -37,7 +37,7 @@ public class SeleniumConfig {
 		options.addArguments("--remote-debugging-port=9222");
 		options.setImplicitWaitTimeout(Duration.ofMillis(2000));
 		options.setPageLoadStrategy(PageLoadStrategy.NONE);
-		options.setLogLevel(ChromeDriverLogLevel.WARNING);
+		options.setLogLevel(ChromeDriverLogLevel.DEBUG);
 		return options;
 	}
 
